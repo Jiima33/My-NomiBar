@@ -1,1 +1,18 @@
+<%= render 'layouts/flash_message' %>
 <h1>mypage</h1>
+<!-- ユーザーの詳細 -->
+<div>
+  <h3>ユーザーネーム:<%= @user.name %>さん</h3>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <h5>自己紹介文</br>
+  <%= @user.introduction %></h5>
+  <% if @user == current_user %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-outline-secondary" %></p>
+  <% end %>
+</div>
+
+<!--会員投稿一覧-->
+  <% if @posts.present? %>
+    <% @posts.last(6).each do |post| %>
+    <% end %>
+  <% end %>

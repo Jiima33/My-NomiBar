@@ -12,12 +12,12 @@
         <% if user_signed_in? %>
           <li>
             <%= link_to user_path(current_user.id), class: 'nav-link text-dark' do %>
-            <i class="fas fa-user"></i>MyPage
+            <i class="fas fa-user"></i> MyPage
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link test-dark' do %>
-            <i class="far fa-sign-out-alt"></i>Log out
+            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
+            <i class="fas fa-sign-out-alt"></i> Log out
             <% end %>
           </li>
 

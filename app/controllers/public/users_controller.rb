@@ -3,9 +3,11 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
   
   def show
+    @user = current_user
   end
   
   def edit
+    @user = current_user
     if @user == current_user
       render :edit
     else
@@ -14,17 +16,18 @@ class Public::UsersController < ApplicationController
   end 
   
   def update
+    @user = current_user
     if @user.update(user_params)
       redirect_to user_path(@user.id), notice: "情報を変更しました"
     else
       render :edit
-    end 
+    end
   end 
   
   
   private
   def user_params
-    params.require(:user).permit(:name, :profile_image, :introduction, :is_stopped, :email)
+    params.require(:user).permit(:name, :profile_image, :introduction, :email, :is_stopped)
   end
 
   def ensure_guest_user
