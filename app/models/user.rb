@@ -17,10 +17,12 @@ class User < ApplicationRecord
   
   #ゲストユーザーアカウント
   def self.guest
-    find_or_create_by!(name: 'ゲストユーザー', email: 'guestuser@example.com') do |user|
+    find_or_create_by!(name: 'guestuser', email: 'guestuser@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.name = "ゲストユーザー"
+      user.name = "guestuser"
     end
   end
+  
+  enum gender: { gender_private: 0, man: 1, woman: 2, other: 3 }
   
 end

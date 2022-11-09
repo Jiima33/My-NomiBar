@@ -61,8 +61,9 @@ ActiveRecord::Schema.define(version: 2022_11_08_072058) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
-    t.text introduction"
+    t.text "introduction"
     t.boolean "is_stopped", default: false
+    t.integer "gender", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

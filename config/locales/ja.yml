@@ -1,0 +1,9 @@
+  ja:
+    enums:
+      user:
+        gender:
+          gender_private: "非公開"
+          man: "男性"
+          woman: "女性"
+          other: "その他"
+          

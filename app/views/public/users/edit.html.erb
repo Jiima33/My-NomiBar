@@ -1,13 +1,21 @@
-<h1>情報編集ページ</h1>
-<%= form_with model: @user do |f| %>
-  <h4>プロフィール画像</h4>
-    <%= f.file_field :profile_image, accept: "image/*" %>
-  <h4>ユーザーネーム</h4>
-    <%= f.text_field :name, autofocus: true, placeholder: "例:飲み屋花子" %>
-  <h4>自己紹介文</h5>
-    <%= f.text_area :introduction, autofocus: true, placeholder: "100文字以内" %>
-  <h4>メールアドレス</h5>
-    <%= f.text_field :email, placeholder: "例:nomibar@com" %></br>
-    <%= f.submit "変更する", class: "btn btn-outline-secondary" %>
-<% end %>
-  
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3 class="pt-3">情報編集</h3>
+      <%= form_with model: @user do |f| %>
+        <h5 class="pt-3">プロフィール画像</h5>
+          <%= f.file_field :profile_image, accept: "image/*" %>
+        <h5 class="pt-2">ユーザーネーム</h5>
+          <%= f.text_field :name, autofocus: true, placeholder: "例:飲み屋花子" %>
+        <h5 class="pt-2">自己紹介文</h5>
+          <%= f.text_area :introduction, autofocus: true, placeholder: "100文字以内" %>
+        <h5 class="pt-2">性別</h5>
+          <%= f.select :gender, User.genders.keys.map {|k| [I18n.t("enums.user.gender.#{k}"), k]} %>
+        <h5 class="pt-2">メールアドレス</h5>
+          <%= f.text_field :email, placeholder: "例:nomibar@com" %></br>
+        <h5 class="pt-2">
+          <%= f.submit "変更する", class: "btn btn-outline-secondary" %></h5>
+      <% end %>
+    </div>
+  </div>
+</div>
