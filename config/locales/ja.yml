@@ -1,4 +1,8 @@
   ja:
+    activerecord:
+      errors:
+        messages:
+          record_invalid: "validation error"
     enums:
       user:
         gender:
@@ -6,4 +10,4 @@
           man: "男性"
           woman: "女性"
           other: "その他"
-          
+
