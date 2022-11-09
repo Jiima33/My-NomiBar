@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_one_attached :profile_image
+  has_many :posts, dependent: :destroy
   
   #プロフィール画像設定
   def get_profile_image(width, height)

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
     resources :users, only: [:show, :edit, :update]
+    resources :posts, only: [:new, :create, :index, :show, :edit, :destroy, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

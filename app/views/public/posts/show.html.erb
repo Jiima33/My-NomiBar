@@ -1,0 +1,15 @@
+<h5>投稿</h5>
+<h5>お店の名前<br>
+  <%= @post.title %>
+</h5>
+<h5>地域<br>
+  <%= @post.area %>
+</h5>
+<h5>内容<br>
+  <%= @post.body %>
+</h5>
+<h5>関連タグ一覧<br>
+<% @post.tags.each do |tag| %>
+    <%= tag.name %>
+<% end %>
+</h5>
