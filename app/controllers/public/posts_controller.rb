@@ -1,5 +1,4 @@
 class Public::PostsController < ApplicationController
-  before_action :authenticate_user!
   
   def new
     @post = Post.new
@@ -24,6 +23,7 @@ class Public::PostsController < ApplicationController
   end 
   
   def edit
+    @post = Post.find(params[:id])
   end 
   
   def update
@@ -36,12 +36,13 @@ class Public::PostsController < ApplicationController
   end
   
   def destroy
+    @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path, notice: "投稿を削除しました"
-  end 
+    redirect_to posts_path, alert: "投稿を削除しました"
+  end
   
   private
-    def post_params
-      params.require(:post).permit(:title, :body, :rate, :area_id, tag_ids: [])
-    end
+  def post_params
+    params.require(:post).permit(:title, :body, :rate, :area_id, tag_ids: [] )
+  end
 end

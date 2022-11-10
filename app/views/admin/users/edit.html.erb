@@ -1,0 +1,13 @@
+<h5>ユーザー編集</h5>
+<%= form_with model: @user, url:admin_user_path(@user), local:true, method: :patch do |f| %>
+    <%= f.label :profile_image, "プロフィール画像" %>
+    <%= f.file_field :image, accept: 'image/*' %>
+    <%= f.label :name, "ユーザー名" %>
+    <%= f.text_field :name, autofocus: true %>
+    <%= f.label :introduction, "自己紹介文" %>
+    <%= f.text_field :introduction, autofocus: true %>
+    アカウント
+    有効<%= f.radio_button :is_stopped, :false %>
+    停止<%= f.radio_button :is_stopped, :true %>
+    <%= f.submit "変更", class: 'btn btn-success' %>
+  <% end %>

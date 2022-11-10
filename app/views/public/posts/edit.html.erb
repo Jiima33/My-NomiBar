@@ -1,5 +1,5 @@
 <%= render 'layouts/flash_message' %>
-<h1>投稿フォーム</h1>
+<h5>投稿編集</h5>
   <%= form_with model: @post do |f| %>
     <h4>お店の名前</h4>
       <%= f.text_field :title %>
@@ -17,5 +17,5 @@
       </div>
    <% end %>
  </div>
-    <%= f.submit '投稿' %>
+    <%= f.submit '変更' %>
   <% end %>

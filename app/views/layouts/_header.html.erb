@@ -7,7 +7,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-          
+
         <!--ユーザーログイン後-->
         <% if user_signed_in? %>
           <li>
@@ -35,8 +35,13 @@
         <!--管理者ログイン後-->
         <% elsif admin_signed_in? %>
           <li>
-            <%= link_to users_path, class: 'nav-link text-dark' do %>
+            <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
             Users
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+            ログアウト
             <% end %>
           </li>
           

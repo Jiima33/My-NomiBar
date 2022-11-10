@@ -1,3 +1,4 @@
+<%= render 'layouts/flash_message' %>
 <h5>投稿</h5>
 <h5>お店の名前<br>
   <%= @post.title %>
@@ -8,8 +9,15 @@
 <h5>内容<br>
   <%= @post.body %>
 </h5>
-<h5>関連タグ一覧<br>
+<h5>関連タグ<br>
 <% @post.tags.each do |tag| %>
-    <%= tag.name %>
+    <span><%= tag.name %></span>
 <% end %>
 </h5>
+<h5>投稿日<br>
+<%= @post.created_at.strftime('%Y/%m/%d') %>
+</h5>
+<% if @post.user == current_user %>
+  <%= link_to "編集", edit_post_path(@post) %>
+  <%= link_to "削除", post_path(@post), method: :delete, date: {confirm: "本当に削除しますか？"} %>
+<% end %>

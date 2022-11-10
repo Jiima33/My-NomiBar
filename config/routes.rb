@@ -20,12 +20,16 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
-    resources :users, only: [:show, :edit, :update]
-    resources :posts, only: [:new, :create, :index, :show, :edit, :destroy, :update] do
-      resource :favorites, only: [:create, :destroy]
-      resources :post_comments, only: [:create, :destroy]
-    end 
+    resources :users, only: [:show,:edit,:update]
+    resources :posts, only: [:new,:index,:show,:edit,:create,:destroy,:update]
   end
+  
+  namespace :admin do
+    root to: 'homes#top'
+    get '/about' => 'homes#about'
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :posts, only: [:index, :show, :destroy]
+  end 
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
