@@ -4,7 +4,7 @@
   </div>
     <div class="row">
       <div class="col-2">
-      <%= image_tag @user.get_profile_image(120,120) %>
+      <%= image_tag @user.get_profile_image(120,120), class: "rounded-circle card-image" %>
       </div>
       <div class="col-3">
       <h6 class="pt-4">性別 :</br>
@@ -23,6 +23,7 @@
     <!--会員投稿一覧-->
     <div class="col-8 mx-auto pt-2"></div>
     <%= render "public/posts/posts_index", posts: @posts %>
+    <% paginate @posts %>
     </div>
 
   </div>

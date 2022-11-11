@@ -14,14 +14,16 @@
             <%= tag.name %>
             <% end %></h6>
           <p class="card-text">内容:<%= post.body %></p>
+          <p class="rate" date-rate="<%= post.rate %>"></p>
           <div class="favorite_buttons_<%= post.id %>">
             <%= render "public/favorites/favorite", post: post %></div>
           <div class="comment_count">
             コメント<%= post.post_comments.count %>件
           </div>
-          <a href="#" class="card-link">Another link</a>
         </div>
       </div>
       <% end %>
     </div>
   </div>
+  <%= paginate @posts %>
+<%= render "layouts/raty" %>

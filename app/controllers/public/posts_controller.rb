@@ -2,7 +2,7 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   def new
     @post = Post.new
-  end 
+  end
   
   def create
     @post = Post.new(post_params)
@@ -15,13 +15,13 @@ class Public::PostsController < ApplicationController
   end 
   
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page])
   end 
   
   def show 
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
-  end 
+  end
   
   def edit
     @post = Post.find(params[:id])
