@@ -7,6 +7,11 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
+  
+  #バリデーション
+  validates :name, presence: true, length: { maximum: 15 }
+  validates :introduction, length: { maximum: 100 }
 
   #プロフィール画像設定
   def get_profile_image(width, height)

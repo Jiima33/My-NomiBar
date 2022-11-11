@@ -1,7 +1,7 @@
   <div class="container">
     <div class="row">
       <h5 class="col-8 pt-2 pb-2">投稿一覧</h5>
-      <% posts.each do |post| %>
+      <% @posts.each do |post| %>
       <div class="card col-5 m-2 flex-direction:row">
         <div class="card-body">
           <h6 class="card-subtitle mb-2 text-muted"><%= post.created_at.strftime('%Y/%m/%d') %>
@@ -16,7 +16,10 @@
             <% end %></h6>
           <p class="card-text">内容:<%= post.body %></p>
           <div class="favorite_buttons_<%= post.id %>">
-          <%= render "public/favorites/favorite", post: post %></div>
+            <%= render "public/favorites/favorite", post: post %></div>
+          <div class="comment_count">
+            コメント<%= post.post_comments.count %>件
+          </div>
           <a href="#" class="card-link">Another link</a>
         </div>
       </div>
