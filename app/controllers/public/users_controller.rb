@@ -4,6 +4,7 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts
   end
   
   def edit
@@ -22,7 +23,12 @@ class Public::UsersController < ApplicationController
     else
       render :edit
     end
-  end 
+  end
+  
+  def favorites
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @post = Post.find(favirites)
+  end
   
   
   private

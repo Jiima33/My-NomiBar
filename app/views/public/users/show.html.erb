@@ -1,23 +1,28 @@
-<%= render 'layouts/flash_message' %>
-<div class="container">
+<div class="container px-5 px-sm-0">
   <div class="row">
-    <!--ユーザー情報-->
-    <div class="col-3 pt-5">
-      <h3>User Page</h3>
-      <h5>ユーザーネーム : <%= @user.name %>さん</h5>
-      <%= image_tag @user.get_profile_image(100,100) %>
-      <h6 class="pt-4">性別 : <%= @user.gender_i18n %></h6>
+    <h5 class="col-8 py-4"><%= @user.name %>さんのページ</h5>
+  </div>
+    <div class="row">
+      <div class="col-2">
+      <%= image_tag @user.get_profile_image(120,120) %>
+      </div>
+      <div class="col-3">
+      <h6 class="pt-4">性別 :</br>
+      <%= @user.gender_i18n %></h6>
+      </div>
+      <div class="col-3">
       <h6>自己紹介文 :</br>
       <%= @user.introduction %></h6>
+      </div>
       <% if @user == current_user %>
         <p><%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-outline-secondary" %></p>
       <% end %>
     </div>
 
     <!--会員投稿一覧-->
-    <% if @posts.present? %>
-      <% @posts.last(6).each do |post| %>
-      <% end %>
-    <% end %>
+    <div class="col-8 mx-auto pt-2"></div>
+    <%= render "public/posts/posts_index", posts: @posts %>
+    </div>
+
   </div>
 </div>

@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
   has_many :posts, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   #プロフィール画像設定
   def get_profile_image(width, height)
@@ -25,7 +26,8 @@ class User < ApplicationRecord
       # user.gender = :gender_private
     end
   end
-
+  
+  #性別選択
   enum gender: { gender_private: 0, man: 1, woman: 2, other: 3 }
 
 end
