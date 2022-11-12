@@ -16,11 +16,13 @@ class Public::PostsController < ApplicationController
   
   def index
     @posts = Post.page(params[:page])
+    @areas = Area.all
   end 
   
   def show 
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
+    @areas = Area.all
   end
   
   def edit

@@ -1,0 +1,17 @@
+<table class="table table-bordered table-hover">
+  <thead class="table-sidebar_th">
+    <tr>
+      <th class="text-center">エリア一覧</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% areas.each do |area| %>
+      <tr>
+        <td>
+          ・<%= link_to area.name, area_path(area.id), class:"text-dark"%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

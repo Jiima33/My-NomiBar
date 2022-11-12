@@ -1,0 +1,19 @@
+<div class="container">
+  <h4 class="col-xl-4 col-lg-6 col-md-8 py-1 mt-2"><strong><%= @area.name %>エリアの投稿一覧</strong></h4>
+    <div class="row">
+
+      <% if @posts.present? %>
+        <%= render 'public/posts/posts_index' %>
+      <% else %>
+        <div class="mx-auto mt-5 d-none d-lg-block">
+          <h3><strong>このエリアの投稿はありません</strong></h3>
+        </div>
+      <% end %>
+
+  　</div>
+</div>
+
+<!--ページネーション-->
+<div class="mx-auto mt-3 pb-5">
+  <%= paginate @posts %>
+</div>
