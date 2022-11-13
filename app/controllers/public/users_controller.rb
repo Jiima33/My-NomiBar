@@ -7,7 +7,6 @@ class Public::UsersController < ApplicationController
     @posts = @user.posts.page(params[:page])
     #並べ替えに必要
     @q = Post.ransack(params[:q])
-    @posts = @q.result.page(params[:page])
   end
   
   def edit

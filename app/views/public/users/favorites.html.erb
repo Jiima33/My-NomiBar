@@ -1,2 +1,11 @@
-<h5 class="col-8 pt-2 pb-2">お気に入り一覧</h5>
-<%= render 'public/posts/posts_index' %>
+<div class="container">
+  <div class="row">
+    <h4 class="col-10 pt-3"><strong>いいね一覧</strong></h4>
+  </div>
+  <div class="row">
+  <%= render 'public/posts/posts_index' %>
+  </div>
+  <!--ページネーション-->
+  <div class="mx-auto">
+    <%= paginate @posts %>
+  </div>

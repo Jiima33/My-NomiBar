@@ -4,9 +4,10 @@
       <div class="card mb-3">
         <div class="card-header"><%= post.created_at.strftime('%Y/%m/%d') %>
           <%= link_to user_path(post.user_id) do %>
-          <%= image_tag post.user.get_profile_image(40,40), class: "rounded-circle card-image" %>
-          <% end %></div>
-          <div class="card-body">
+            <%= image_tag post.user.get_profile_image(40,40), class: "rounded-circle card-image" %>
+          <% end %>
+        </div>
+        <div class="card-body">
           <h5 class="card-title">店名:<%= link_to post.title, post_path(post.id) %></h5>
           <h6 class="card-subtitle mb-2 text-muted">エリア:<%= post.area.name %></h6>
           <h6 class="card-subtitle mb-2 text-muted">タグ:
