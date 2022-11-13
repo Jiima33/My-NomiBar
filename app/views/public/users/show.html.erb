@@ -1,35 +1,54 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
   <div class="row">
-    <h5 class="col-8 py-4"><%= @user.name %>さんのページ</h5>
+    <h5 class="col-12"><%= @user.name %>さんのページ</h5>
   </div>
-    <div class="row">
-      <div class="col-4">
-      <%= image_tag @user.get_profile_image(120,120), class: "rounded-circle card-image" %><br>
+  
+  <div class="row">
+    <div class="col-5">
+      <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %><br>
+    </div>
+    
+    <div class="col-5">
+      <div class="row border-bottom border-secondary">
+        <div class= "col-5">
+          性別:
+        </div>
+        <div class="col">
+          <%= @user.gender_i18n %>
+        </div>
       </div>
-      <table class="table col-2">
-        <tbody>
-          <tr>
-            <th scope="row">性別</th>
-            <td><%= @user.gender_i18n %></td>
-          </tr>
-          <tr>
-            <th scope="row">自己紹介</th>
-            <td><%= @user.introduction %></td>
-          </tr>
-        </tbody>
-      </table>
-      <% if @user == current_user %>
-        <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary" %>
-      <% end %><br>
-      
-      <%= link_to "いいねした投稿", favorites_user_path(@user), class: "btn btn-outline-danger" %>
+        
+        <div class="row border-bottom border-secondary">
+          <div class= "col-5">
+            自己紹介:
+          </div>
+          <div class="col">
+            <%= @user.introduction %>
+          </div>
+        </div>
+        
+        <% if @user == current_user %>
+          <div class="text-right mt-3">
+            <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary" %>
+          </div>
+        
+          <div class="text-right mt-3">
+            <%= link_to "いいねした投稿", favorites_user_path(@user), class: "btn btn-outline-danger" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
 
     <!--会員投稿一覧-->
-    <div class="col-8 pt-2">投稿一覧
-    <%= render "public/posts/posts_index", posts: @posts %>
+    <div class="row">
+      <h5 class="col-8 py-4">投稿一覧</h5>
     </div>
-    <% paginate @posts %>
+    <div class="row">
+      <%= render "public/posts/posts_index", posts: @posts %>
     </div>
-
+      
+    <div class="mx-auto">
+      <%= paginate @posts %>
+    </div>
   </div>
 </div>
