@@ -1,29 +1,29 @@
 <% @posts.each do |post| %>
-    <div class="col-md-4 m-2">
-      <div class="card-desk">
-        <div class="card mb-3">
-          <div class="card-header"><%= post.created_at.strftime('%Y/%m/%d') %>
-            <%= link_to user_path(post.user_id) do %>
-            <%= image_tag post.user.get_profile_image(40,40), class: "rounded-circle card-image" %>
-            <% end %></div>
-            <div class="card-body">
-            <h5 class="card-title">店名:<%= link_to post.title, post_path(post.id) %></h5>
-            <h6 class="card-subtitle mb-2 text-muted">エリア:<%= post.area.name %></h6>
-            <h6 class="card-subtitle mb-2 text-muted">タグ:
-              <% post.tags.each do |tag| %>
-              <%= tag.name %>
-              <% end %></h6>
-            <p class="card-text">内容:<%= post.body %></p>
-            <p class="rate" date-rate="<%= post.rate %>"></p>
-            <h6 class="favorite_buttons_<%= post.id %>">
-              <%= render "public/favorites/favorite", post: post %></h6>
-            <h6 class="comment_count">
-              コメント<%= link_to post.post_comments.count, post_path(post.id) %>件
-            </h6>
-          </div>
+  <div class="col-md-5 m-2">
+    <div class="card-desk">
+      <div class="card mb-3">
+        <div class="card-header"><%= post.created_at.strftime('%Y/%m/%d') %>
+          <%= link_to user_path(post.user_id) do %>
+          <%= image_tag post.user.get_profile_image(40,40), class: "rounded-circle card-image" %>
+          <% end %></div>
+          <div class="card-body">
+          <h5 class="card-title">店名:<%= link_to post.title, post_path(post.id) %></h5>
+          <h6 class="card-subtitle mb-2 text-muted">エリア:<%= post.area.name %></h6>
+          <h6 class="card-subtitle mb-2 text-muted">タグ:
+            <% post.tags.each do |tag| %>
+            <%= tag.name %>
+            <% end %></h6>
+          <p class="card-text">内容:<%= post.body %></p>
+          <p class="rate" date-rate="<%= post.rate %>"></p>
+          <h6 class="favorite_buttons_<%= post.id %>">
+            <%= render "public/favorites/favorite", post: post %></h6>
+          <h6 class="comment_count">
+            コメント<%= link_to post.post_comments.count, post_path(post.id) %>件
+          </h6>
         </div>
       </div>
     </div>
-  <% end %>
+  </div>
+<% end %>
 
 <%= render "layouts/raty" %>

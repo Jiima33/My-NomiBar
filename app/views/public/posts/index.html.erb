@@ -1,5 +1,15 @@
 <div class="container">
   <div class="row pt-3">
+    <p class="col text-right">
+      <%= search_form_for @q do |f| %>
+        <%= f.label :title, "店名検索 :" %>
+        <%= f.search_field :title_cont %>
+        <%= f.submit "検索", class: "btn btn-inline" %>
+      <% end %>
+    </p>
+  </div>
+  
+  <div class="row pt-3">
     <%= render "public/posts/search_form" %>
   </div>
     
@@ -21,5 +31,4 @@
   <div class="mx-auto">
     <%= paginate @posts %>
   </div>
-
 </div>

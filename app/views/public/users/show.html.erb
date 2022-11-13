@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
-    <h5 class="col-12"><%= @user.name %>さんのページ</h5>
+    <h5 class="col-12 pt-3"><%= @user.name %>さんのページ</h5>
   </div>
   
   <div class="row">
-    <div class="col-5">
+    <div class="col-3">
       <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %><br>
     </div>
     
-    <div class="col-5">
+    <div class="col-3">
       <div class="row border-bottom border-secondary">
         <div class= "col-5">
           性別:

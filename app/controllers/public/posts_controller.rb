@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
+  
   def new
     @post = Post.new
   end
@@ -16,9 +17,9 @@ class Public::PostsController < ApplicationController
   
   def index
     @q = Post.ransack(params[:q])
+    @posts = @q.result.includes(:area, :tags).page(params[:page])
     @areas = Area.all
     @tags = Tag.all
-    @posts = @q.result.includes(:area, :tags).page(params[:page])
   end 
   
   def show 

@@ -7,7 +7,7 @@
       <%= f.collection_select :area_id_eq, @areas, :id, :name, :include_blank => "指定なし" %><br>
       </div>
       <div class="col-10">
-      <%= f.label "関連タグ :" %><br>
+      <%= f.label "関連タグ :(複数選択可)" %><br>
       <%= f.collection_check_boxes :tags_id_in, @tags, :id, :name %>
       </div>
       <div class="col-10">
