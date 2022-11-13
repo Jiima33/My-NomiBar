@@ -47,8 +47,8 @@ class Public::PostsController < ApplicationController
   end
   
   def search
-    @q = Post.search(search_params)
-    @posts = @q.result.includes(:area, :tags)
+      @q = Post.search(search_params)
+      @posts = @q.result.includes(:area, :tags)
   end 
   
   private

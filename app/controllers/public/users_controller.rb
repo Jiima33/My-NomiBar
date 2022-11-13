@@ -5,6 +5,9 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page])
+    #並べ替えに必要
+    @q = Post.ransack(params[:q])
+    @posts = @q.result.page(params[:page])
   end
   
   def edit
@@ -32,6 +35,10 @@ class Public::UsersController < ApplicationController
     @posts = Kaminari.paginate_array(@posts).page(params[:page])
   end
   
+  def search
+    @q = Post.search(search_params)
+    @posts = @q.result.includes(:area, :tags)
+  end
   
   private
   def user_params

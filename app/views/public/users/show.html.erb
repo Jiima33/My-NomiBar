@@ -38,11 +38,19 @@
         <% end %>
     </div>
   </div>
-
-    <!--会員投稿一覧-->
+  
     <div class="row">
       <h4 class="col-10 pt-3"><strong>投稿一覧</strong></h4>
     </div>
+    
+    <!--並び替え-->
+    <div class="row">
+      <p class="col text-right">
+        <%= sort_link(@q, :updated_at, '新着順' ) %>
+        <%= sort_link(@q, :favorites_count, 'いいねが多い順' ) %>
+      </p>
+    </div>
+    <!--会員投稿一覧-->
     <div class="row">
       <%= render "public/posts/posts_index", posts: @posts %>
     </div>
