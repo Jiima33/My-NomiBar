@@ -4,9 +4,10 @@
   </div>
     
   <div class="row">
-    <h4 class="col-sm-4"><strong>投稿一覧</strong></h4>
+    <h4 class="col-10 pt-3"><strong>投稿一覧</strong></h4>
   </div>
-  <div class="row">
+  
+  <div class="row pt-3">
     <% if @posts.present? %>
       <%= render 'public/posts/posts_index' %>
     <% else %>
