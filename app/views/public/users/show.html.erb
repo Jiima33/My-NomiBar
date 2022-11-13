@@ -3,26 +3,31 @@
     <h5 class="col-8 py-4"><%= @user.name %>さんのページ</h5>
   </div>
     <div class="row">
-      <div class="col-2">
-      <%= image_tag @user.get_profile_image(120,120), class: "rounded-circle card-image" %>
+      <div class="col-4">
+      <%= image_tag @user.get_profile_image(120,120), class: "rounded-circle card-image" %><br>
       </div>
-      <div class="col-3">
-      <h6 class="pt-4">性別 :</br>
-      <%= @user.gender_i18n %></h6>
-      </div>
-      <div class="col-3">
-      <h6>自己紹介文 :</br>
-      <%= @user.introduction %></h6>
-      </div>
+      <table class="table col-2">
+        <tbody>
+          <tr>
+            <th scope="row">性別</th>
+            <td><%= @user.gender_i18n %></td>
+          </tr>
+          <tr>
+            <th scope="row">自己紹介</th>
+            <td><%= @user.introduction %></td>
+          </tr>
+        </tbody>
+      </table>
       <% if @user == current_user %>
-        <p><%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-outline-secondary" %></p>
-      <% end %>
-    </div>
-    <%= link_to "いいねした投稿", favorites_user_path(@user) %>
+        <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary" %>
+      <% end %><br>
+      
+      <%= link_to "いいねした投稿", favorites_user_path(@user), class: "btn btn-outline-danger" %>
 
     <!--会員投稿一覧-->
-    <div class="col-8 mx-auto pt-2"></div>
+    <div class="col-8 pt-2">投稿一覧
     <%= render "public/posts/posts_index", posts: @posts %>
+    </div>
     <% paginate @posts %>
     </div>
 

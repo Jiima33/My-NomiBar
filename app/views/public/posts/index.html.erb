@@ -1,11 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-2 pt-3">
+    <div class="col-md-2 pt-4">
       <%= render 'public/posts/area_lists', areas: @areas %>
     </div>
     
-    <h5 class="col-md-7 pt-2 pb-2">投稿一覧
+    <h5 class="col-md-5 pt-4 pb-2">投稿一覧
       <%= render 'public/posts/posts_index' %>
     </h5>
   </div>
+</div>
+
+<div class="mx-auto mt-3 pb-5">
+  <%= paginate @posts %>
 </div>
