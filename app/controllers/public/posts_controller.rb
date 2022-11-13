@@ -15,14 +15,15 @@ class Public::PostsController < ApplicationController
   end 
   
   def index
-    @posts = Post.page(params[:page])
+    @q = Post.ransack(params[:q])
     @areas = Area.all
+    @tags = Tag.all
+    @posts = @q.result.includes(:area, :tags).page(params[:page])
   end 
   
   def show 
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
-    @areas = Area.all
   end
   
   def edit
@@ -44,8 +45,17 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path, alert: "投稿を削除しました"
   end
   
+  def search
+    @q = Post.search(search_params)
+    @posts = @q.result.includes(:area, :tags)
+  end 
+  
   private
   def post_params
     params.require(:post).permit(:title, :body, :rate, :area_id, tag_ids: [] )
+  end
+  
+  def search_params
+    params.require(:q).permit(:area_id_eq)
   end
 end

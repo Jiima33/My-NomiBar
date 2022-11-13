@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   #ゲストログイン
   devise_scope :user do
     post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
   }
   
+  # 会員用
   scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about'
@@ -28,14 +30,11 @@ Rails.application.routes.draw do
     resources :posts, only: [:new,:index,:show,:edit,:create,:destroy,:update] do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
+      get 'search', to: 'posts#search'
     end
-    resources :areas, only: [:show]
   end
   
-  
-  
-  
-  
+  # 管理者用
   namespace :admin do
     root to: 'homes#top'
     get '/about' => 'homes#about'
