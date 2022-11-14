@@ -1,8 +1,9 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
+  
   def index
-    @users = User.page(params[:page]).per(4)
-    @users = User.where.not(name: "guestuser").page(params[:page]).per(4)
+    @users = User.page(params[:page])
+    #@users = User.where.not(name: "guestuser").page(params[:page])
   end
   
   def show 

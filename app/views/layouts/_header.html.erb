@@ -45,6 +45,11 @@
             <% end %>
           </li>
           <li class="nav-item">
+            <%= link_to admin_post_comments_path, class: 'nav-link text-dark' do %>
+            コメント一覧
+            <% end %>
+          </li>
+          <li class="nav-item">
             <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
             ログアウト
             <% end %>
