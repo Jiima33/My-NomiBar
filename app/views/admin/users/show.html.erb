@@ -1,20 +1,51 @@
-<h5>ユーザー詳細</h5>
-  <%= image_tag @user.get_profile_image(20,20) %>
-  ID<%= @user.id %>
-  ユーザー名<%= @user.name %>
-  自己紹介文<%= @user.introduction %>
-  メールアドレス<%= @user.email %>
-  アカウント状況
-  <% if @user.is_stopped == true %>
-  停止
-  <% else %>
-  有効
-  <% end %>
-  <%= link_to '編集する', edit_admin_user_path(@user) %>
+<div class='container'>
+  <div class="row">
+    <h4 class="col-10 pt-3"><strong>ユーザー詳細</strong></h4>
+  </div>
   
-  <h5>投稿(<%= @user.posts.count %>件)</h5>
-  <% @user.posts.each do |post| %>
-  <%= post.title %><br>
-  <%= post.created_at.strftime('%Y/%m/%d') %>
-  <%= link_to '詳細', admin_post_path(post.id) %>
-  <% end %>
+  <div class='row'>
+    <dvi class='col pt-3'>
+      <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">User ID</th>
+          <th scope="col">プロフィール画像</th>
+          <th scope="col">ユーザー名</th>
+          <th scope="col">自己紹介文</th>
+          <th scope="col">メールアドレス</th>
+          <th scope="col">アカウント状況</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><%= @user.id %></th>
+          <td>
+            <%= image_tag @user.get_profile_image(80, 80), class: "rounded-circle", :size => '100' %>
+          </td>
+          <td>
+            <%= @user.name %>
+          </td>
+          <td>
+            <%= @user.introduction %>
+          </td>
+          <td>
+            <%= @user.email %>
+          </td>
+          <% if @user.is_stopped == true %>
+          <td>
+            停止
+          </td>
+          <% else %>
+          <td>
+            有効
+          </td>
+          <% end %>
+          <td>
+            <%= link_to '編集する', edit_admin_user_path(@user), class: 'btn btn-outline-secondary' %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

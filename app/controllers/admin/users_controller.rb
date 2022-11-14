@@ -3,7 +3,6 @@ class Admin::UsersController < ApplicationController
   
   def index
     @users = User.page(params[:page])
-    #@users = User.where.not(name: "guestuser").page(params[:page])
   end
   
   def show 

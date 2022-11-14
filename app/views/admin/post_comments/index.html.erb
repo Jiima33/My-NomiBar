@@ -4,12 +4,11 @@
   </div>
     
   <div class='row'>
-    <dvi class='col-10 pt-3'>
+    <dvi class='col pt-3'>
       <table class="table">
         <thead>
           <tr>
-            <th scope="col"></th>
-            <th scope="col">ユーザー</th>
+            <th scope="col">ユーザー名</th>
             <th scope="col">コメント内容</th>
             <th scope="col">Date</th>
             <th scope="col"></th>
@@ -18,12 +17,11 @@
         <% @post_comments.each do |post_comment| %>
         <tbody>
           <tr>
-            <th scope="row"></th>
-            <td>
+            <th scope="row">
               <%= link_to admin_user_path(post_comment.user.id) do %>
                 <%= post_comment.user.name %>
               <% end %>
-            </td>
+            </th>
             <td>
               <%= post_comment.comment %>
             </td>
