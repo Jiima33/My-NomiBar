@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :destroy] do
+      get 'search', to: 'posts#search'
       resources :post_comments, only: [:index, :destroy]
     end
     resources :post_comments, only: [:index, :destroy]

@@ -2,6 +2,12 @@
   <div class="row">
     <h4 class="col-10 pt-3"><strong>コメント一覧</strong></h4>
   </div>
+  
+  <div class="row">
+    <p class="col text-left">
+      <%= sort_link(@q, :updated_at, '新着順' ) %>
+    </p>
+  </div>
     
   <div class='row'>
     <dvi class='col pt-3'>

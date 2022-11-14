@@ -2,6 +2,13 @@
   <div class="row">
     <h4 class="col-10 pt-3"><strong>投稿一覧</strong></h4>
   </div>
+  
+  <div class="row">
+    <p class="col text-left">
+      <%= sort_link(@q, :updated_at, '新着順' ) %>
+    </p>
+  </div>
+  
     <div class='row'>
       <div class='col pt-3'>
         <table class="table">
