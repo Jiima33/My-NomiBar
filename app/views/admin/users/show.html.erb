@@ -3,8 +3,9 @@
     <h4 class="col-10 pt-3"><strong>ユーザー詳細</strong></h4>
   </div>
   
+  <!--ユーザー情報-->
   <div class='row'>
-    <dvi class='col pt-3'>
+    <div class='col pt-3'>
       <table class="table">
       <thead>
         <tr>
@@ -46,6 +47,49 @@
           </td>
         </tr>
       </tbody>
-    </table>
+      </table>
+    </div>
   </div>
+  
+  <!--ユーザーの投稿一覧-->
+  <div class="row">
+    <h4 class="col-10 pt-3"><strong>投稿一覧</strong></h4>
+  </div>
+    <div class='row'>
+      <div class='col pt-3'>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">タイトル</th>
+              <th scope="col">内容</th>
+              <th scope="col">Date</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <% if @posts.present? %>
+            <% @posts.each do |post| %>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td><%= post.title %></td>
+                <td><%= post.body %></td>
+                <td>
+                  <%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
+                </td>
+                <td><%= link_to "削除", admin_post_path(post), method: :delete, data: {confirm: "本当に削除しますか？"}, class: 'btn btn-outline-dark' %></td>
+              </tr>
+            </tbody>
+            <% end %>
+        </table>
+        <% else %>
+         <div class="row">
+            <h3 class="col text-center mx-auto">
+            <strong>投稿はありません</strong>
+            </h3>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <%= paginate @posts %>
 </div>

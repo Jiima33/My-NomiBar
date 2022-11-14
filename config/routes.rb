@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   # 管理者用
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
-    resources :posts, only: [:index, :show, :destroy] do
+    resources :posts, only: [:index, :destroy] do
       resources :post_comments, only: [:index, :destroy]
     end
     resources :post_comments, only: [:index, :destroy]

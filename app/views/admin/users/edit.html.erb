@@ -1,13 +1,30 @@
-<h5>ユーザー編集</h5>
-<%= form_with model: @user, url:admin_user_path(@user), local:true, method: :patch do |f| %>
-    <%= f.label :profile_image, "プロフィール画像" %>
-    <%= f.file_field :image, accept: 'image/*' %>
-    <%= f.label :name, "ユーザー名" %>
-    <%= f.text_field :name, autofocus: true %>
-    <%= f.label :introduction, "自己紹介文" %>
-    <%= f.text_field :introduction, autofocus: true %>
-    アカウント
-    有効<%= f.radio_button :is_stopped, :false %>
-    停止<%= f.radio_button :is_stopped, :true %>
-    <%= f.submit "変更", class: 'btn btn-success' %>
-  <% end %>
+<div class='container'>
+  <div class="row">
+    <h4 class="col-10 pt-3"><strong>プロフィールの編集</strong></h4>
+  </div>
+  
+  <div class="col-5 pt-3">
+    <%= form_with model: @user, url:admin_user_path(@user), local:true, method: :patch do |f| %>
+      <div class="form-group">
+        <label class="form-label">プロフィール画像 :</label>
+        <%= f.file_field :profile_image, accept: "image/*", class: 'profile_image' %>
+      </div>
+      <div class="form-group">
+        <label class="form-label">ユーザー名 :</label>
+        <%= f.text_field :name, autofocus: true, placeholder: "例:飲み屋花子", class: 'form-control user_name' %>
+      </div>
+      <div class="form-group">
+        <label class="form-label">自己紹介文 :</label>
+        <%= f.text_area :introduction, autofocus: true, placeholder: "100文字以内", class: 'form-control user_introduction' %>
+      </div>
+      <div class="form-group">
+        <label class="form-label">アカウント状況 :</label>
+        有効<%= f.radio_button :is_stopped, :false %>
+        停止<%= f.radio_button :is_stopped, :true %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "変更する", class: "btn btn-outline-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>
