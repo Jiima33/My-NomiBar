@@ -1,6 +1,8 @@
 <div class="container">
+  
+  <!--店名検索フォーム-->
   <div class="row pt-3">
-    <p class="col text-right">
+    <p class="col text-dark">
       <%= search_form_for @q do |f| %>
         <%= f.label :title, "店名検索 :" %>
         <%= f.search_field :title_cont %>
@@ -9,7 +11,7 @@
     </p>
   </div>
   
-  <!--検索フォーム-->
+  <!--タグ検索フォーム-->
   <div class="row pt-3">
     <%= render "public/posts/search_form" %>
   </div>

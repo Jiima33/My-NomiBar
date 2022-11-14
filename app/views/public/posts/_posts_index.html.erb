@@ -2,10 +2,11 @@
   <div class="col-md-5 m-2">
     <div class="card-desk">
       <div class="card mb-3">
-        <div class="card-header"><%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
-          <%= link_to user_path(post.user_id) do %>
-            <%= image_tag post.user.get_profile_image(40,40), class: "rounded-circle card-image" %>
-          <% end %>
+        <div class="card-header">
+        <%= link_to user_path(post.user_id) do %>
+            <%= image_tag post.user.get_profile_image(50,50), class: "rounded-circle" %>
+        <% end %>
+        <%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
         </div>
         <div class="card-body">
           <h5 class="card-title">店名:<%= link_to post.title, post_path(post.id) %></h5>
