@@ -2,7 +2,8 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @users = User.page(params[:page])
+    @q = User.ransack(params[:q])
+    @users = @q.result.page(params[:page])
   end
   
   def show 
@@ -23,9 +24,18 @@ class Admin::UsersController < ApplicationController
     end
   end
   
+  def search
+    @q = User.search(search_params)
+    @users = @q.result
+  end 
+  
   private
     def user_params
       params.require(:user).permit(:name, :introduction, :profile_image, :is_stopped)
+    end
+    
+    def search_params
+      params.require(:q).permit()
     end
 end
 
