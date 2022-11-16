@@ -4,6 +4,7 @@
   </div>
   
   <div class="col-8">
+    <%= render "layouts/errors", obj: @post %>
     <%= form_with model: @post do |f| %>
     <div class="form-group">
       <label class="form-label">店名 :</label>
