@@ -1,11 +1,35 @@
-<% post.post_comments.each do |post_comment| %>
-    <%= link_to user_path(post_comment.user.id) do %>
-      <%= image_tag post_comment.user.get_profile_image(40, 40), class: "rounded-circle" %>
-    <% end %>
-    <%= post_comment.user.name %><br>
-    <%= post_comment.created_at.strftime('%Y/%m/%d') %><br>
-    <%= post_comment.comment %>
-    <% if post_comment.user == current_user %>
-      <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, data: { confirm: '本当に削除してもよろしいですか？' } %>
-    <% end %><br>
-<% end %>
+<div class="row">
+  <h4 class="col-10 pt-3"><strong>コメント</strong></h4>
+</div>
+<div class="row">
+  <div class="col">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ユーザー</th>
+          <th scope="col">コメント</th>
+          <th scope="col">日付</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <% post.post_comments.each do |post_comment| %>
+      <tbody>
+        <tr>
+          <th scope="row">
+            <%= link_to user_path(post_comment.user.id) do %>
+              <%= image_tag post_comment.user.get_profile_image(40, 40), class: "rounded-circle" %>
+              <%= post_comment.user.name %>
+            <% end %>
+          </th>
+          <td><%= post_comment.comment %></td>
+          <td><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+          <td>
+            <% if post_comment.user == current_user %>
+              <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-outline-secondary' %>
+            <% end %>
+          </td>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>

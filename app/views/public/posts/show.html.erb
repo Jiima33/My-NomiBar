@@ -1,31 +1,44 @@
-<h5>投稿</h5>
-<h5>店名<br>
-  <%= @post.title %>
-</h5>
-<h5>地域<br>
-  <%= @post.area.name %>
-</h5>
-<h5>内容<br>
-  <%= @post.body %>
-</h5>
-<h5>関連タグ<br>
-<% @post.tags.each do |tag| %>
-    <span><%= tag.name %></span>
-<% end %>
-</h5>
-<div class="rate" date-rate="<%= @post.rate %>"></div>
-<h5>投稿日<br>
-<%= @post.created_at.strftime('%Y/%m/%d') %>
-</h5>
-<div class="favorite_buttons_<%= @post.id %>">
-<%= render "public/favorites/favorite", post: @post %></div>
-<div class="comment_area">
-<%= render "public/post_comments/index", post: @post %></div><br>
-<div class="new_comment">
-<%= render "public/post_comments/form", post: @post, post_comment: @post_comment %></div>
-
-<% if @post.user == current_user %>
-  <%= link_to "編集", edit_post_path(@post) %>
-  <%= link_to "削除", post_path(@post), method: :delete, remote: true, data: { confirm: '本当に削除してもよろしいですか？' } %>
-<% end %>
+<div class='container'>
+  <div class="row">
+      <h4 class="col-10 pt-3"><strong>投稿詳細</strong></h4>
+  </div>
+  <div class="col m-2">
+    <div class="card-desk">
+      <div class="card mb-3">
+        <div class="card-header">
+          <%= image_tag @post.user.get_profile_image(50,50), class: "rounded-circle" %>
+          <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">店名:<%= @post.title %></h5>
+          <h6 class="card-subtitle mb-2 text-muted">エリア:<%= @post.area.name %></h6>
+          <h6 class="card-subtitle mb-2 text-muted">タグ:
+            <% @post.tags.each do |tag| %>
+              <%= tag.name %>
+            <% end %>
+          </h6>
+          <h5 class="card-text">感想:<%= @post.body %></h5>
+          <p class="rate" date-rate="<%= @post.rate %>"></p>
+          <h6 class="favorite_buttons_<%= @post.id %>">
+            <%= render "public/favorites/favorite", post: @post %></h6>
+          <h6 class="comment_count">
+            <%= "コメント:" + @post.post_comments.count.to_s + "件" %>
+          </h6>
+        </div>
+      </div>
+    </div>
+    <% if @post.user == current_user %>
+    <%= link_to "投稿を編集", edit_post_path(@post), class: 'btn btn-outline-secondary btn-sm' %>
+    <%= link_to "投稿を削除", post_path(@post), method: :delete, remote: true, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn btn-outline-secondary btn-sm' %>
+    <% end %>
+  </div>
+  <div class="comment_area">
+    <%= render "public/post_comments/index", post: @post %></div><br>
+  <div class="new_comment">
+    <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+  </div>
+  <div class='col text-right'>
+   <%= link_to "投稿一覧へ戻る", posts_path %>
+  </div>
+</div>
 <%= render "layouts/raty" %>
