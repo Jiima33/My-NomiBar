@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
     @post = Post.new
   end
-  
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
@@ -12,25 +14,25 @@ class Public::PostsController < ApplicationController
       redirect_to post_path(@post), notice: "投稿しました"
     else
       render :new
-    end 
-  end 
-  
+    end
+  end
+
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result.includes(:area, :tags).page(params[:page])
     @areas = Area.all
     @tags = Tag.all
-  end 
-  
-  def show 
+  end
+
+  def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
   end
-  
+
   def edit
     @post = Post.find(params[:id])
-  end 
-  
+  end
+
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
@@ -39,24 +41,24 @@ class Public::PostsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     post = Post.find(params[:id])
     post.destroy
     redirect_to posts_path, alert: "投稿を削除しました"
   end
-  
+
   def search
-      @q = Post.search(search_params)
-      @posts = @q.result.includes(:area, :tags)
-  end 
-  
+    @q = Post.search(search_params)
+    @posts = @q.result.includes(:area, :tags)
+  end
+
   private
-  def post_params
-    params.require(:post).permit(:title, :body, :rate, :area_id, tag_ids: [] )
-  end
-  
-  def search_params
-    params.require(:q).permit(:area_id_eq)
-  end
+    def post_params
+      params.require(:post).permit(:title, :body, :rate, :area_id, tag_ids: [])
+    end
+
+    def search_params
+      params.require(:q).permit(:area_id_eq)
+    end
 end

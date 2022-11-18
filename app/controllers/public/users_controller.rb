@@ -1,23 +1,25 @@
+# frozen_string_literal: true
+
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_guest_user, only: [:edit]
-  
+
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page])
-    #並べ替えに必要
+    # 並べ替えに必要
     @q = Post.ransack(params[:q])
   end
-  
+
   def edit
     @user = User.find(params[:id])
     if @user == current_user
       render :edit
     else
       redirect_to user_path(current_user.id)
-    end 
-  end 
-  
+    end
+  end
+
   def update
     @user = current_user
     if @user.update(user_params)
@@ -26,28 +28,28 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @posts = Post.find(favorites)
     @posts = Kaminari.paginate_array(@posts).page(params[:page])
   end
-  
+
   def search
     @q = Post.search(search_params)
     @posts = @q.result.includes(:area, :tags)
   end
-  
-  private
-  def user_params
-    params.require(:user).permit(:name, :profile_image, :introduction, :email, :is_stopped, :gender)
-  end
 
-  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.name == "guestuser"
-      redirect_to user_path(current_user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません"
+  private
+    def user_params
+      params.require(:user).permit(:name, :profile_image, :introduction, :email, :is_stopped, :gender)
     end
-  end
+
+    def ensure_guest_user
+      @user = User.find(params[:id])
+      if @user.name == "guestuser"
+        redirect_to user_path(current_user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません"
+      end
+    end
 end

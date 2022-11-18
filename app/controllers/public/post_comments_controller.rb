@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Public::PostCommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
@@ -10,14 +12,14 @@ class Public::PostCommentsController < ApplicationController
       render :error
     end
   end
-    
+
   def destroy
     @post = Post.find(params[:post_id])
     PostComment.find(params[:id]).destroy
     flash.now[:alert] = "コメントを削除しました"
     render :destroy
   end
-  
+
   private
     def post_comment_params
       params.require(:post_comment).permit(:comment)
