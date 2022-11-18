@@ -2,9 +2,17 @@
   <div class="row">
     <h4 class="col-10 pt-3"><strong>いいね一覧</strong></h4>
   </div>
+  
   <div class="row">
-  <%= render 'public/posts/posts_index' %>
+  <% if @posts.present? %>
+    <%= render 'public/posts/posts_index' %>
+  <% else %>
+    <div class="mx-auto mt-5">
+      <h3><strong>お気に入りの投稿はありません</strong></h3>
+    </div>
+  <% end %>
   </div>
+  
   <!--ページネーション-->
   <div class="mx-auto">
     <%= paginate @posts %>
