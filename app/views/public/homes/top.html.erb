@@ -1,20 +1,21 @@
-<div class="container px-4 px-lg-5 h-50">
-  <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-    <div class="col-lg-8 align-self-end pt-5">
+<div class="container">
+  <div class="row mx-auto pt-3">
+    <div class="col-lg-6 text-center pt-3">
       <h1>ようこそMyNomiBarへ<i class="fas fa-glass-cheers"></i></h1>
-      <p>Barのレビューサイトです！</br>
-      お勧めのBarなどを共有しましょう</p>
-      <div class="btn-wrapper col-8 mx-auto" >
-          <div  class="row" >
-            <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-outline-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
-          </div>
-          <div class="row">
-            <%= link_to 'Log in',new_user_session_path, class: "btn btn-outline-info btn-sm btn-block mb-3 sign_in" %>
-          </div>
-          <div class="row">
-            <%= link_to 'Sign Up',new_user_registration_path, class: "btn btn-outline-success btn-sm btn-block sign_up" %>
-          </div>
-      </div>
+      <h5>Bar(飲みの場）のレビューサイトです <strong>!</strong></br>
+      お勧めや好きな場所を共有しましょう <strong>!</strong></h5>
+    </div>
+    <div class="col-5 pt-3 mx-auto" >
+          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "btn btn-outline-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+          <%= link_to 'Log in',new_user_session_path, class: "btn btn-outline-info btn-sm btn-block mb-3 sign_in" %>
+          <%= link_to 'Sign Up',new_user_registration_path, class: "btn btn-outline-success btn-sm btn-block sign_up" %>
     </div>
   </div>
+  
+  <div class="row pt-3">
+    <div class="col">
+      <%= image_tag "top.jpg", class: "img-fluid" %>
+    </div>
+  </div>
+  
 </div>
