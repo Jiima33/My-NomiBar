@@ -19,6 +19,8 @@
 - 個人用にメモとして残しておきたい時
 
 ## 設計書
+ER図
+https://drive.google.com/file/d/1D-BKDcmLTLm4-e2DLB_DXHhR4bjzmmf0/view?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
