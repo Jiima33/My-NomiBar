@@ -1,4 +1,6 @@
 # My-NomiBar(飲み場)
+<img width="1280" alt="スクリーンショット 2022-11-30 13 16 07" src="https://user-images.githubusercontent.com/100123445/204706498-f6b2ad50-ee46-47ec-9ce5-4f5c67c12465.png">
+
 
 ## サイト概要
 ### サイトテーマ
