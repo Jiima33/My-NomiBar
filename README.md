@@ -1,4 +1,12 @@
 # My-NomiBar(飲み場)
+PC
+
+<img width="1280" alt="スクリーンショット 2022-11-30 13 16 07" src="https://user-images.githubusercontent.com/100123445/204706498-f6b2ad50-ee46-47ec-9ce5-4f5c67c12465.png">
+
+Phone
+
+<img width="584" alt="スクリーンショット 2022-11-30 13 19 54" src="https://user-images.githubusercontent.com/100123445/204706799-aab04411-0a65-43c3-a649-375523a73ab4.png">
+
 
 ## サイト概要
 ### サイトテーマ
@@ -19,6 +27,8 @@
 - 個人用にメモとして残しておきたい時
 
 ## 設計書
+ER図
+https://drive.google.com/file/d/1D-BKDcmLTLm4-e2DLB_DXHhR4bjzmmf0/view?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
