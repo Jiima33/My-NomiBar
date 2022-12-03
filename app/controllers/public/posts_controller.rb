@@ -2,6 +2,8 @@
 
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_post, only: [:edit, :update, :destroy]
+  
 
   def new
     @post = Post.new
@@ -60,5 +62,11 @@ class Public::PostsController < ApplicationController
 
     def search_params
       params.require(:q).permit(:area_id_eq)
+    end
+    
+    def correct_post
+      unless Post.find(params[:id]).user_id == current_user.id
+        redirect_to posts_path, alert: "アクセス権限がありません"
+      end
     end
 end
