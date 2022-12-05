@@ -1,8 +1,9 @@
-  ja:
-    activerecord:
-      errors:
-        messages:
-          record_invalid: "validation error"
+ja:
+  #activerecord:
+    #errors:
+      #messages:
+        #record_invalid: "validation error"
+        
     enums:
       user:
         gender:
@@ -10,4 +11,19 @@
           man: "男性"
           woman: "女性"
           other: "その他"
-
+          
+    activerecord:
+      attributes:
+        user:
+          name: "名前"
+          email: "メールアドレス"
+          password: "パスワード"
+          introduction: "自己紹介文"
+        post:
+          title: "店名"
+          body: "感想"
+          area: "地域"
+          tag_ids: "関連タグ"
+          rate: "評価"
+        post_comment:
+          comment: "コメント"
