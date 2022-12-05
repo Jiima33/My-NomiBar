@@ -19,8 +19,10 @@
       </div>
       <div class="form-group">
         <label class="form-label">アカウント状況 :</label>
-        有効<%= f.radio_button :is_stopped, :false %>
-        停止<%= f.radio_button :is_stopped, :true %>
+        <%= f.radio_button :is_stopped, :false %>
+        <%= f.label :is_stopped, "有効", value: :false %>
+        <%= f.radio_button :is_stopped, :true %>
+        <%= f.label :is_stopped, "停止", value: :true %>
       </div>
       <div class="form-group">
         <%= f.submit "変更する", class: "btn btn-outline-success" %>
