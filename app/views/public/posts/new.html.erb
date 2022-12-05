@@ -8,7 +8,7 @@
   <%= form_with model: @post do |f| %>
   <div class="form-group">
     <label class="form-label">店名 :</label>
-    <%= f.text_field :title, class: 'form-control post_title' %>
+    <%= f.text_field :title, class: 'form-control post_title', placeholder: "20文字以内" %>
   </div>
   <div class="form-group">
     <label class="form-label">地域 :</label>
@@ -16,7 +16,7 @@
   </div>
   <div class="form-group">
     <label class="form-label">感想 :</label>
-    <%= f.text_area:body, class: 'form-control post_body' %>
+    <%= f.text_area:body, class: 'form-control post_body', placeholder: "200文字以内" %>
   </div>
   <div class="form-group">
     <label class="form-label">関連タグ(複数選択可) :</label><br>
